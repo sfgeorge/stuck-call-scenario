@@ -2,7 +2,9 @@
 
 ## Background
 
-On Adhearsion 2.6.1, it is possible to 
+On Adhearsion 2.6.1, "stuck calls" are occasionally observed".  A "stuck call" is one which has been released by Asterisk, but is still perpetually tracked by Adhearsion.
+
+One situation that seems to produce stuck calls is when a SIP peer calling an Adhearsion-backed Asterisk instance has sent an INVITE, quickly followed by a CANCEL.  However, there is a brief amount of pause time that _must_ be present between the INVITE..CANCEL in order for the situation to occur, such that the Asterisk `AGI(agi:async)` command is invoked, but that the call is _over_ by the time that Adhearsion has launched the CallController.
 
 ## Software
 
@@ -45,7 +47,7 @@ If you have _not_ produced any stuck calls, then you may need to be a bit more a
 
 ### Running more calls
 
-  TOTAL_CALLS=30 ../sipp/stuck-call-generator.sh
+    TOTAL_CALLS=30 ../sipp/stuck-call-generator.sh
 
 ### Using more diverse timing for quick-hangups
 
