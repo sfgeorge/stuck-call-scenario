@@ -8,4 +8,8 @@ Adhearsion::Events.draw do
     Cache::Stats.startup
   end
 
+  shutdown do
+    Cache::Stats.shutdown
+  end
+
 end

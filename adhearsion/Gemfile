@@ -20,3 +20,7 @@ gem 'adhearsion-asr'
 group :development, :test do
   gem 'rspec'
 end
+
+
+# Lock-downs for API compatibility
+gem 'eventmachine', '= 1.0.8'
